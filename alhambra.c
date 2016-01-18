@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 
-#include <alhambra.h>
+#include "alhambra.h"
 
 /* pir on top : main theme
  * ultrasound on side : voices with distance tracker on volume
