@@ -19,7 +19,7 @@
 #ifndef alhambra_h_
 #define alhambra_h_
 
-void alhambra();
+void alhambra_start(const char **argv);
 
 #endif 
 

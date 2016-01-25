@@ -20,8 +20,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int boca_start()  {
-
+int boca_start(void)  {
+  printf("\nyour are in the boca");
 }
 
 int led_eyes()  {

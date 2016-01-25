@@ -19,7 +19,7 @@
 #ifndef sculpture_h_
 #define sculpture_h_
 
-void start_sculpture(char song_name);
+void sculpture_start();
 
 #endif
 

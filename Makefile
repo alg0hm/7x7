@@ -1,8 +1,7 @@
-
-IDIR =./
 CC = gcc
 CFLAGS=-I$(IDIR) -Wall
 
+IDIR =./
 ODIR = ../lib
 LDIR = ./
 EDIR = ../
@@ -19,7 +18,7 @@ $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 7x7: $(OBJ) 
-	gcc -o $(EDIR)$@ $^ $(CFLAGS) $(LIBS)
+	$(CC) -o $(EDIR)$@ $^ $(CFLAGS) $(LIBS)
 
 clean: 
 	rm -rf *.o

@@ -16,6 +16,11 @@
  * =====================================================================================
  */
 
-void start_sculpture(char song_name)  {
+#include <stdio.h>
+#include <stdlib.h>
 
+void sculpture_start()  {
+
+  printf("\nyou are in the sculpture");
+  
 }
