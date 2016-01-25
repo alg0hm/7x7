@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS=-I$(IDIR) -Wall
 
-IDIR =./
+IDIR =./include
 ODIR = ../lib
 LDIR = ./
 EDIR = ../
