@@ -10,7 +10,7 @@
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
+ *         Author:  David Ferreira (df), david.io.ferreira@gmail.com  
  *   Organization:  
  *
  * =====================================================================================

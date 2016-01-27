@@ -19,11 +19,10 @@
 #ifndef player_h_
 #define player_h_
 
-extern int playSong();
 
-int playSong();
-void pause_song();
-void song_list();
+void play_track();
+void pause_track();
+void release_track();
 
 #endif
 

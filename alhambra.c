@@ -10,22 +10,24 @@
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
+ *         Author:  David Ferreira (df), david.io.ferreira@gmail.com  
  *   Organization:  
  *
  * =====================================================================================
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "alhambra.h"
+#include "player.h"
 
 /* pir on top : main theme
  * ultrasound on side : voices with distance tracker on volume
  */
 
 void alhambra_start (const char **argv) {
-  printf("***Alhambra*** track number %s\n",argv[2]);
-  
+  printf("\n***Alhambra***\n\n");
+  play_track();
+  delay(10000);
+  pause_track();
 }
-
-

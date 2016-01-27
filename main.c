@@ -3,14 +3,14 @@
  *
  *       Filename:  mpdplayer.c
  *
- *    Description:  
+ *    Description:  Application manager for 7x7 project - Jean Pierre Muller 
  *
  *        Version:  1.0
  *        Created:  01/12/16 11:12:24
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
+ *         Author:  David Ferreira (df), david.io.ferreira@gmail.com  
  *   Organization:  
  *
  * =====================================================================================
@@ -20,24 +20,44 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <wiringPi.h>
+#include <mcp3004.h>
 
 #include "player.h"
 #include "alhambra.h"
 #include "boca.h"
 #include "sculpture.h"
-#include "input.h"
 #include "volume.h"
+
+#define BASE 100
+#define SPI_CHAN 0
+
+#define pir_pin 5
+#define buttonA_pin 5 
+#define buttonB_pin 6
+#define buttonC_pin 13
+#define buttonD_pin 26
+
+#define ultrasound_pin 100
+#define ir_pin 101
 
 int missing();
 
 int main(int argc, char *argv[])  {
-
+    
     int aflag = 0;
     int bflag = 0;
     int sflag = 0;
     int i;
-    //int index;
-    if (argc < 3) {
+    wiringPiSetupGpio();
+    mcp3004Setup(BASE, SPI_CHAN);
+    pinMode(buttonA_pin,INPUT);
+    pinMode(buttonB_pin,INPUT);
+//    pinMode(buttonC_pin,INPUT);
+    pinMode(buttonD_pin,INPUT);
+//    pinMode(pir_pin, INPUT);
+
+    if (argc < 2) {
       missing();
       return 0;
     }
@@ -72,25 +92,10 @@ int main(int argc, char *argv[])  {
     }
 }
 
-
 int missing(int argc, char **argv) {
-     printf("\nusage: %s --trackNumber\n", argv[0]);
+     printf("\nusage: %s -option\n", argv[0]);
      printf("\nmode:");
      printf("\n\t-a : Alhambra");
      printf("\n\t-b : Boca Verita");
      printf("\n\t-s : 7x7 Sculpture");
-     printf("\n\ntrackNumber:");
-     printf("\n\t1 : 7x7 sculpture - A = ROBERT WYATT = Red = Monday = Moon = Diana = Muladhara (Earth)");
-     printf("\n\t2 : 7x7 sculpture - B = ARCHIE SHEPP = Orange = Tuesday = Mars = Svadhisthana (Water)");
-     printf("\n\t3 : 7x7 sculpture - C = SEAN O'HAGAN = Yellow = Wednesday = Mercury = Manipurana (Fire)");
-     printf("\n\t4 : 7x7 sculpture - D = MULATU ASTATKE = Green = Thursday = Jupiter = Anahata (Air)");
-     printf("\n\t5 : 7x7 sculpture - E = KASSIN = Blue = Friday = Venus = Visuddha (Ether)");
-     printf("\n\t6 : 7x7 sculpture - F = NILE RODGERS = Indigo = Saturday = Saturn = Anja (Soul)");
-     printf("\n\t7 : 7x7 sculpture - G= TERRY RILEY = Violet = Sunday = Sun = Sahasrara (Vibration)");
-     printf("\n\t8 : 7x7 Boca Verita - Robert Wyatt discussion");
-     printf("\n\t9 : 7x7 Alhabra Wall - Alhambra main theme");
-     printf("\n\t10 : 7x7 Alhambra Wall - Alhambra left theme");
-     printf("\n\t11 : 7x7 Alhambra Wall - Alhambra right theme\n");
 }
-
-

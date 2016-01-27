@@ -10,7 +10,7 @@
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  YOUR NAME (), 
+ *         Author:  David Ferreira (df), david.io.ferreira@gmail.com  
  *   Organization:  
  *
  * =====================================================================================
@@ -22,7 +22,7 @@
 
 #define ALSA_PCM_NEW_HW_PARAMS_API
 
-void volume_set(int volume)
+int volume_set(int volume)
 {
     long min, max;
     snd_mixer_t *handle;
@@ -49,7 +49,7 @@ void volume_set(int volume)
     snd_mixer_close(handle);
 }
 
-void volume_down()
+int volume_down(int vol_min, int vol_max)
 {
     long min, max;
     snd_mixer_t *handle;
@@ -70,7 +70,7 @@ void volume_down()
 
     snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
     
-    for (int i = 85; i>30; i--) {
+    for (int i = vol_max; i>vol_min; i--) {
       
       int v = i*max /100;
       snd_mixer_selem_set_playback_volume_all(elem, v);
@@ -80,7 +80,7 @@ void volume_down()
     snd_mixer_close(handle);
 }
 
-void volume_up()
+int volume_up(int vol_min, int vol_max)
 {
     long min, max;
     snd_mixer_t *handle;
@@ -101,7 +101,7 @@ void volume_up()
 
     snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
     
-    for (int i = 30; i<85; i++) {
+    for (int i = vol_min; i<vol_max; i++) {
       
       int v = i*max /100;
       snd_mixer_selem_set_playback_volume_all(elem, v);

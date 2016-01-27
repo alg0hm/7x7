@@ -8,10 +8,10 @@ EDIR = ../
 
 LIBS= -lwiringPi -lmpdclient -lasound
 
-_DEPS = alhambra.h boca.h input.h player.h sculpture.h volume.h 
+_DEPS = alhambra.h boca.h player.h sculpture.h volume.h 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = alhambra.o boca.o input.o player.o sculpture.o volume.o main.o
+_OBJ = alhambra.o boca.o player.o sculpture.o volume.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.c $(DEPS)
