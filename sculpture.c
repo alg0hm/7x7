@@ -40,7 +40,7 @@ void sculpture_start()  {
   for (;;)  {
     int x = analogRead(ultrasound_pin); 
     int vol_min = 30, vol_max = 85;
-    button(vol_min,vol_max);
+//    button(vol_min,vol_max);
 
     if (x<100)  {
       play_track();
@@ -57,17 +57,16 @@ void sculpture_play(int min, int max)  {
   printf("\n\n***7x7 sculpture play***\n\n");
   for (;;)  {
     int x = analogRead(ultrasound_pin); 
-    button(min, max);
+//    button(min, max);
     if (x>100)  {
-      for (int i=0; i<20000; i++) {
+      for (int i=0; i<15; i++) {
         int x = analogRead(ultrasound_pin);
-        int t = i/1000;
-        printf("counter = %d\n",t);
-        button(min, max);
+        printf("counter = %d\n",i);
+//        button(min, max);
         if (x<100)  {
             sculpture_play(min, max);
         }
-        delay(1);
+        delay(1000);
       }
       volume_down(min, max);
       pause_track();
@@ -82,14 +81,14 @@ void sculpture_release(int min, int max)  {
   printf("\n\n***7x7 sculpture release***\n\n");
   for (;;)  {
     int x = analogRead(ultrasound_pin); 
-    button(min, max);
+//    button(min, max);
     if (x<100)  {
       release_track();
       volume_up(min, max);
       sculpture_play(min, max);
     }
     printf("ultrasound = %d\n",x);
-    delay(200);
+    delay(50);
   }
 
 }
@@ -102,12 +101,14 @@ void button(int min, int max) {
   }
   if (digitalRead(buttonB_pin) == 1) {
     printf("\nbutton B\n");
+    max = volume_set(max+1);
   }
   if (digitalRead(buttonC_pin) == 1) {
     printf("\nbutton C\n");
   }
   if (digitalRead(buttonD_pin) == 1) {
     printf("\nbutton D\n");
+    max = volume_set(max-1);
   }
 
 }

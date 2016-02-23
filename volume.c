@@ -28,7 +28,8 @@ int volume_set(int volume)
     snd_mixer_t *handle;
     snd_mixer_selem_id_t *sid;
     const char *card = "default";
-    const char *selem_name = "Master";
+    //const char *selem_name = "Master";
+    const char *selem_name = "Digital";
 
 
     snd_mixer_open(&handle, 0);
@@ -47,6 +48,7 @@ int volume_set(int volume)
     int v = volume*max /100;
     snd_mixer_selem_set_playback_volume_all(elem, v);
     snd_mixer_close(handle);
+    return v;
 }
 
 int volume_down(int vol_min, int vol_max)
@@ -75,7 +77,7 @@ int volume_down(int vol_min, int vol_max)
       int v = i*max /100;
       snd_mixer_selem_set_playback_volume_all(elem, v);
       //printf("min = %d, max= %d, volume = %d\n", min, max, volume);
-      usleep(200000);
+      usleep(80000);
     }
     snd_mixer_close(handle);
 }
@@ -106,7 +108,7 @@ int volume_up(int vol_min, int vol_max)
       int v = i*max /100;
       snd_mixer_selem_set_playback_volume_all(elem, v);
       //printf("min = %d, max= %d, volume = %d\n", min, max, volume);
-      usleep(200000);
+      usleep(50000);
     }
     snd_mixer_close(handle);
 }

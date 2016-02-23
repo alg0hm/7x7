@@ -32,7 +32,7 @@
 #define BASE 100
 #define SPI_CHAN 0
 
-#define pir_pin 5
+#define pir_pin 22
 #define buttonA_pin 5 
 #define buttonB_pin 6
 #define buttonC_pin 13
@@ -53,9 +53,9 @@ int main(int argc, char *argv[])  {
     mcp3004Setup(BASE, SPI_CHAN);
     pinMode(buttonA_pin,INPUT);
     pinMode(buttonB_pin,INPUT);
-//    pinMode(buttonC_pin,INPUT);
+    pinMode(buttonC_pin,INPUT);
     pinMode(buttonD_pin,INPUT);
-//    pinMode(pir_pin, INPUT);
+    pinMode(pir_pin, INPUT);
 
     if (argc < 2) {
       missing();
